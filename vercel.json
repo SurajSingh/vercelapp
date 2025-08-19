@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "api/**/*.js", "use": "@vercel/node" },
+    { "src": "src/app.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api-docs", "dest": "/api/docs.js" },
+    { "src": "/api-docs/(.*)", "dest": "/api/docs.js" },
+    { "src": "/api/test", "dest": "/api/test.js" },
+    { "src": "/api/health", "dest": "/api/health.js" },
+    { "src": "/api/blobs", "dest": "/api/blobs.js" },
+    { "src": "/api/blobs/(.*)", "dest": "/api/blobs/[folderName].js" },
+    { "src": "/api/images/([^/]+)", "dest": "/api/images/[folderName].js" },
+    { "src": "/api/images/([^/]+)/([^/]+)", "dest": "/api/images/[folderName]/[imageName].js" },
+    { "src": "/api/search", "dest": "/api/search.js" },
+    { "src": "/api/cache", "dest": "/api/cache.js" },
+    { "src": "/api/(.*)", "dest": "/api/$1" }
+  ],
+  "env": { "NODE_ENV": "production" }
+}
